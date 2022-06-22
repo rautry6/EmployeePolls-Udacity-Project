@@ -1,4 +1,3 @@
-import logo from "./logo.svg";
 import "./App.css";
 import Dashboard from "./components/Dashboard";
 import LoginPage from "./components/LoginPage";
@@ -14,14 +13,17 @@ import {useNavigate} from "react-router-dom";
 
 function App(props) {
   const authedUser = props.authedUser;
+  const currentQuestion = props.currentQuestion;
+  console.log(currentQuestion)
   const navigate = useNavigate();
 
   useEffect(() => {
-
+    props.dispatch(handleInitialData());
+    if(!props.loading)
+    {
     if(authedUser === null) {
       navigate("/login");
-    }
-    props.dispatch(handleInitialData());
+    }}
   }, []);
 
   return (
@@ -36,6 +38,7 @@ function App(props) {
           <Route path="/new" element={<Poll id={"8xf0y6ziyjabvozdd253nd"}/>} />
           <Route path="/add" element={<CreatePoll />} />
           <Route path="/leaderboard" element={<Leaderboard />} />
+          <Route path ="questions/:id" element={<Poll id={currentQuestion[0]}/>} />
         </Routes>
       )}
     </div>
@@ -48,6 +51,7 @@ function mapStateToProps(state) {
     questions: state.questions,
     loading: Object.keys(state.questions).length === 0,
     authedUser: state.authedUser,
+    currentQuestion: state.currentQuestion,
   };
 }
 
