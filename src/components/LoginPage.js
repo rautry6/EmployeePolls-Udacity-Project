@@ -1,5 +1,5 @@
 import { connect } from "react-redux/es/exports";
-import { useState, useCallback } from "react";
+import { useState} from "react";
 import { setAuthedUser } from "../actions/authedUser";
 import { useNavigate } from "react-router-dom";
 
@@ -9,8 +9,6 @@ const LoginPage = (props) => {
   let [password, setPassword] = useState("");
   let [error, setError] = useState("");
 
-  const [, updateState] = useState();
-  const forceUpdate = useCallback(() => updateState({}), []);
 
   let users = props.users;
 
@@ -31,7 +29,6 @@ const LoginPage = (props) => {
       setPassword("");
       setError(true);
     }
-    forceUpdate();
   };
 
   const handleUsername = (e) => {

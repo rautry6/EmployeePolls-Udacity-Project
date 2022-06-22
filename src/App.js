@@ -10,9 +10,17 @@ import Nav from "./components/Nav";
 import { Route, Routes } from "react-router-dom";
 import CreatePoll from "./components/CreatePoll";
 import Leaderboard from "./components/Leaderboard";
+import {useNavigate} from "react-router-dom";
 
 function App(props) {
+  const authedUser = props.authedUser;
+  const navigate = useNavigate();
+
   useEffect(() => {
+
+    if(authedUser === null) {
+      navigate("/login");
+    }
     props.dispatch(handleInitialData());
   }, []);
 
@@ -21,7 +29,7 @@ function App(props) {
       <Nav />
       {props.loading ? (
         <div>Loading...</div>
-      ) : (
+      ) : ( 
         <Routes>
           <Route path="/" element={<Dashboard />} />
           <Route path="/login" element={<LoginPage />} />
@@ -36,10 +44,10 @@ function App(props) {
 
 //method to map state to props
 function mapStateToProps(state) {
-  console.log(state.questions);
   return {
     questions: state.questions,
     loading: Object.keys(state.questions).length === 0,
+    authedUser: state.authedUser,
   };
 }
 
