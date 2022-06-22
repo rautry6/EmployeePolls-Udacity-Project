@@ -8,14 +8,13 @@ const CreatePoll = (props) => {
     const authedUser = props.authedUser;
 
     const nav = useNavigate();
-    const [question, setQuestion] = useState("");
     const [optionOne, setOptionOne] = useState("");
     const [optionTwo, setOptionTwo] = useState("");
 
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        if (question.length > 0 && optionOne.length > 0 && optionTwo.length > 0) {
+        if (optionOne.length > 0 && optionTwo.length > 0) {
             const questionId = generateUID();
             const question = 
             {
@@ -26,17 +25,9 @@ const CreatePoll = (props) => {
                 timestamp: Date.now(),
             }
         
-
             props.dispatch(handleAddQuestion(question));
             nav("/");
-            console.log(question);
         }
-    }
-
-
-    const handleQuestion = (e) => {
-        e.preventDefault();
-        setQuestion(e.target.value);
     }
 
     const handleOptionOne = (e) => {
@@ -54,8 +45,7 @@ const CreatePoll = (props) => {
             <h1>Create Poll</h1>
             <form  onSubmit={handleSubmit}>
                 <div>
-                    <label>Question:</label>
-                    <input type="text" value = {question} name="question" onChange={handleQuestion}/>
+                    <label>Would You Rather</label>
                 </div>
                 <div>
                     <label>Option One:</label>
