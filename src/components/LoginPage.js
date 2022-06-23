@@ -1,33 +1,32 @@
 import { connect } from "react-redux/es/exports";
-import { useState} from "react";
+import { useState } from "react";
 import { setAuthedUser } from "../actions/authedUser";
 import { useNavigate } from "react-router-dom";
 
 const LoginPage = (props) => {
   const nav = useNavigate();
-  let [username, setUsername] = useState("");
-  let [password, setPassword] = useState("");
-  let [error, setError] = useState("");
-
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState(false);
 
   let users = props.users;
 
   const handleSubmit = (e) => {
-    console.log(username, password);
+    e.preventDefault();
     if (username in users) {
       if (users[username].password === password) {
         props.dispatch(setAuthedUser(users[username]));
 
         nav("/");
       } else {
+        setError(true);
         setUsername("");
         setPassword("");
-        setError(true);
       }
     } else {
+      setError(true);
       setUsername("");
       setPassword("");
-      setError(true);
     }
   };
 
@@ -46,11 +45,19 @@ const LoginPage = (props) => {
       <div>
         {error ? (
           <div>
-            <p itemID="invalid-login">Invalid username or password</p>{" "}
+            <h3 itemID="invalid-login">Invalid username or password</h3>{" "}
             <p>User</p>
-            <input type="text" value={username} onChange={handleUsername} />
+            <input
+              type="text"
+              value={username}
+              onChange={handleUsername}
+            />
             <p>Password</p>
-            <input type="password" value={password} onChange={handlePassword} />
+            <input
+              type="password"
+              value={password}
+              onChange={handlePassword}
+            />
             <p>
               <button onClick={handleSubmit}>Login</button>
             </p>
@@ -58,12 +65,20 @@ const LoginPage = (props) => {
         ) : (
           <div>
             <p>User</p>
-            <input type="text" onChange={handleUsername} />
+            <input
+              type="text"
+              value={username}
+              onChange={handleUsername}
+            />
             <p>Password</p>
-            <input type="password" onChange={handlePassword} />
+            <input
+              type="password"
+              value={password}
+              onChange={handlePassword}
+            />
             <p>
               <button onClick={handleSubmit}>Login</button>
-            </p>{" "}
+            </p>
           </div>
         )}
       </div>
