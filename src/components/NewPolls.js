@@ -17,7 +17,6 @@ const NewPolls = (props) => {
   const handleSubmit = (key) => {
     navigate("../questions/:" + key[1].id, { replace: true });
     key[0] = key[1].id;
-    console.log(key);
     props.dispatch(setCurrentQuestion(key));
   };
 

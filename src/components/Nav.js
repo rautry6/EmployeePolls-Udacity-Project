@@ -4,39 +4,31 @@ import { setAuthedUser } from "../actions/authedUser";
 import { useState, useEffect } from "react";
 
 const Nav = (props) => {
- const [authedUser, setAuthUser] = useState(props.authedUser);
+  const [authedUser, setAuthUser] = useState(props.authedUser);
 
   useEffect(() => {
     setAuthUser(props.authedUser);
-  }
-  , [props.authedUser]);
+  }, [props.authedUser]);
 
   const onLogout = (e) => {
-    setAuthUser("")
+    setAuthUser("");
     setAuthedUser(null);
   };
 
   return (
     <div className="nav">
-      {authedUser ? <Link to="/">Home </Link> : <Link to="/login">Home </Link>}
-      {authedUser ? (
-        <Link to="/leaderboard">Leaderboard </Link>
-      ) : (
-        <Link to="/login">Leaderboard </Link>
-      )}
-      {authedUser ? <Link to="/new">New </Link> : <Link to="/login">New </Link>}
-      {authedUser ? (
-        <Link to="/answered">Answered </Link>
-      ) : (
-        <Link to="/login">New </Link>
-      )}
-      {authedUser ? (
-        <Link to="/add">Add Poll </Link>
-      ) : (
-        <Link to="/login">Add Poll </Link>
-      )}
-      <Link to="/login" onClick={onLogout}>
-        {authedUser} Logout{" "}
+      <Link to="/homepage">Home </Link>
+
+      <Link to="/leaderboard">Leaderboard </Link>
+
+      <Link to="/new">New </Link>
+
+      <Link to="/answered">Answered </Link>
+
+      <Link to="/add">Add Poll </Link>
+
+      <Link to="/" onClick={onLogout}>
+        {authedUser} Logout
       </Link>
     </div>
   );

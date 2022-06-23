@@ -5,19 +5,26 @@ import { setCurrentQuestion } from "../actions/currentQuestion";
 
 const Dashboard = (props) => {
   const navigate = useNavigate();
+  const authedUser = props.authedUser;
 
-  const handleSubmit = (key) => {
-    console.log(key);
-    navigate("questions/:" + key[1].id);
-    key[0] = key[1].id;
-    props.dispatch(setCurrentQuestion(key));
-  };
+  let newQuestions;
+  let doneQuestions;
 
   let questions = props.questions;
   let questionsArray = Object.keys(questions).map((key) => questions[key]);
   let user = props.users[props.authedUser];
-  let newQuestions = questionsArray.filter((question) => user.answers[question.id] === undefined);
-  let doneQuestions = questionsArray.filter((question) => user.answers[question.id] !== undefined);
+  newQuestions = questionsArray
+    .filter((question) => user.answers[question.id] === undefined)
+    .sort((a, b) => b.timestamp - a.timestamp);
+  doneQuestions = questionsArray
+    .filter((question) => user.answers[question.id] !== undefined)
+    .sort((a, b) => b.timestamp - a.timestamp);
+
+  const handleSubmit = (key) => {
+    navigate("../questions/:" + key[1].id);
+    key[0] = key[1].id;
+    props.dispatch(setCurrentQuestion(key));
+  };
 
   return (
     <div>

@@ -26,7 +26,7 @@ const CreatePoll = (props) => {
             }
         
             props.dispatch(handleAddQuestion(question));
-            nav("/");
+            nav("/homepage");
         }
     }
 

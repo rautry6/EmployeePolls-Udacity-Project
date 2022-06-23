@@ -1,24 +1,35 @@
-//functional component for poll
 import React from 'react';
 import { connect } from 'react-redux';
+import { saveAnswer } from '../actions/users';
 
 
 const Poll = (props) => {
-    console.log(props.question);
+    let question = props.question;
+    let authedUser = props.authedUser;
+
+    const handleOptionOne = (e) => {
+        e.preventDefault();
+        props.dispatch(saveAnswer(authedUser, question.id, 'optionOne'));
+    }
+    
+    const handleOptionTwo = (e) => {
+        e.preventDefault();
+        props.dispatch(saveAnswer(authedUser, question.id, 'optionTwo'));
+    }
     return (
         <div>
             <ul>
-               <h3>Poll by {props.question.author}</h3>
+               <h3>Poll by {question.author}</h3>
 
                <h3>Would You Rather</h3>
                <form>
                      <div>
-                            <p>{props.question.optionOne.text}</p>
-                            <input type="radio" name="option" value="optionOne" />
+                            <p>{question.optionOne.text}</p>
+                            <input type="button" name="option" value="Choose" onClick={handleOptionOne} />
                         </div>
                         <div>
-                            <p>{props.question.optionTwo.text}</p>
-                            <input type="radio" name="option" value="optionTwo" />
+                            <p>{question.optionTwo.text}</p>
+                            <input type="button" name="option" value="Choose" onClick={handleOptionTwo}/>
                         </div>
                </form>
             </ul>
@@ -26,11 +37,10 @@ const Poll = (props) => {
     );
 }
 
-//method to map state to props
 function mapStateToProps(state , {id}) {
-    console.log(state.questions)
     return {
         question: state.questions[id],
+        authedUser: state.authedUser,
     };
 }
 

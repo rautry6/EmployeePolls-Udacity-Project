@@ -3,7 +3,7 @@ import { useState } from "react";
 import { setAuthedUser } from "../actions/authedUser";
 import { useNavigate } from "react-router-dom";
 
-const LoginPage = (props) => {
+const PleaseLogin = (props) => {
   const nav = useNavigate();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -39,6 +39,7 @@ const LoginPage = (props) => {
 
   return (
     <div className="login-page">
+    <h3 >Please Login to View Page</h3>
       <h1>Employee Polls</h1>
       <h2>Login</h2>
       <div>
@@ -91,4 +92,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps)(LoginPage);
+export default connect(mapStateToProps)(PleaseLogin);
