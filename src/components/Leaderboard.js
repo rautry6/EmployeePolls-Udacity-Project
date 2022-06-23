@@ -24,11 +24,12 @@ const Leaderboard = (props) => {
           <ul>
             {sortedUsers.map((user, index) => (
               <li key={index}>
-                <p>{`${user.name} ${user.avatar} Questions: ${
+              <img src={user.avatarURL} alt={user.name} className="leaderboard-profile-picture"/>
+                <span>{`${user.name} ${user.avatar} Questions: ${
                   questionsArray.filter(
                     (question) => question.author === user.id
                   ).length
-                } Answers: ${Object.keys(user.answers).length}`}</p>
+                } Answers: ${Object.keys(user.answers).length}`}</span>
               </li>
             ))}
           </ul>

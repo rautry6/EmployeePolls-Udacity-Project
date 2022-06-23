@@ -3,8 +3,10 @@ import { connect } from "react-redux";
 import { setAuthedUser } from "../actions/authedUser";
 import { useState, useEffect } from "react";
 
+
 const Nav = (props) => {
   const [authedUser, setAuthUser] = useState(props.authedUser);
+  let users = props.users;
 
   useEffect(() => {
     setAuthUser(props.authedUser);
@@ -27,8 +29,10 @@ const Nav = (props) => {
 
       <Link to="/add">Add Poll </Link>
 
+      <span>{authedUser}</span>
+      <img src={users[authedUser].avatarURL} alt="avatar" className="nav-avatar"/>
       <Link to="/" onClick={onLogout}>
-        {authedUser} Logout
+        Logout 
       </Link>
     </div>
   );
@@ -37,6 +41,7 @@ const Nav = (props) => {
 function mapStateToProps(state) {
   return {
     authedUser: state.authedUser,
+    users : state.users,
   };
 }
 
