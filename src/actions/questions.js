@@ -24,7 +24,6 @@ export function handleAddQuestion(question) {
   };
 }
 
-// action to receive questions
 export function receiveQuestions(questions) {
   return {
     type: RECEIVE_QUESTIONS,

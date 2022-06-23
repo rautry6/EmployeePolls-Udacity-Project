@@ -3,43 +3,60 @@ import Dashboard from "./components/Dashboard";
 import LoginPage from "./components/LoginPage";
 import Poll from "./components/Poll";
 import { connect } from "react-redux";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { handleInitialData } from "./actions/shared";
 import Nav from "./components/Nav";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes} from "react-router-dom";
 import CreatePoll from "./components/CreatePoll";
 import Leaderboard from "./components/Leaderboard";
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import NewPolls from "./components/NewPolls";
+import Answered from "./components/Answered";
 
 function App(props) {
   const authedUser = props.authedUser;
-  const currentQuestion = props.currentQuestion;
-  console.log(currentQuestion)
+  const currentQuestion = props.currentQuestion || "";
   const navigate = useNavigate();
+  const notInitialRender = useRef(false);
 
   useEffect(() => {
     props.dispatch(handleInitialData());
-    if(!props.loading)
-    {
-    if(authedUser === null) {
-      navigate("/login");
-    }}
   }, []);
+
+  // useEffect(() => {
+  //   console.log(notInitialRender.current);
+  //   props.dispatch(handleInitialData());
+  //   if (authedUser === null) {
+  //     if (notInitialRender.current) {
+  //       window.alert("You must be logged in to view this page");
+  //     } else {
+  //       notInitialRender.current = true;
+  //     }
+  //     navigate("/");
+  //   }
+  // }, [authedUser]);
 
   return (
     <div className="App">
       <Nav />
+
       {props.loading ? (
         <div>Loading...</div>
       ) : ( 
+      
         <Routes>
-          <Route path="/" element={<Dashboard />} />
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/new" element={<Poll id={"8xf0y6ziyjabvozdd253nd"}/>} />
+          <Route path="/" element={<LoginPage />} />
+          <Route path="/homepage" element={<Dashboard />} />
+          <Route path="/new" element={<NewPolls />} />
+          <Route path="/answered" element={<Answered />} />
           <Route path="/add" element={<CreatePoll />} />
           <Route path="/leaderboard" element={<Leaderboard />} />
-          <Route path ="questions/:id" element={<Poll id={currentQuestion[0]}/>} />
+          <Route
+            path="questions/:id"
+            element={<Poll id={currentQuestion[0]} />}
+          />
         </Routes>
+      
       )}
     </div>
   );

@@ -1,7 +1,6 @@
 import { connect } from "react-redux/es/exports";
 import { useState } from "react";
 import { setAuthedUser } from "../actions/authedUser";
-import { useNavigate } from "react-router-dom";
 
 const PleaseLogin = (props) => {
   const [username, setUsername] = useState("");
