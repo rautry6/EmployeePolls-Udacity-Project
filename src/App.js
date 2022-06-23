@@ -9,32 +9,16 @@ import Nav from "./components/Nav";
 import { Route, Routes} from "react-router-dom";
 import CreatePoll from "./components/CreatePoll";
 import Leaderboard from "./components/Leaderboard";
-import { useNavigate } from "react-router-dom";
 import NewPolls from "./components/NewPolls";
 import Answered from "./components/Answered";
+import PageNotFound from "./components/PageNotFound";
 
 function App(props) {
-  const authedUser = props.authedUser;
   const currentQuestion = props.currentQuestion || "";
-  const navigate = useNavigate();
-  const notInitialRender = useRef(false);
 
   useEffect(() => {
     props.dispatch(handleInitialData());
   }, []);
-
-  // useEffect(() => {
-  //   console.log(notInitialRender.current);
-  //   props.dispatch(handleInitialData());
-  //   if (authedUser === null) {
-  //     if (notInitialRender.current) {
-  //       window.alert("You must be logged in to view this page");
-  //     } else {
-  //       notInitialRender.current = true;
-  //     }
-  //     navigate("/");
-  //   }
-  // }, [authedUser]);
 
   return (
     <div className="App">
@@ -55,6 +39,7 @@ function App(props) {
             path="questions/:id"
             element={<Poll id={currentQuestion[0]} />}
           />
+          <Route path = '*' element={<PageNotFound />} />
         </Routes>
       
       )}
@@ -62,7 +47,6 @@ function App(props) {
   );
 }
 
-//method to map state to props
 function mapStateToProps(state) {
   return {
     questions: state.questions,
