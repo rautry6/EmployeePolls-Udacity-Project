@@ -1,14 +1,13 @@
 import { connect } from "react-redux/es/exports";
 import { useEffect, useState } from "react";
-import LoginPage from "./LoginPage";
+import PleaseLogin from "./PleaseLogin";
 
 const Leaderboard = (props) => {
   const [authedUser, setAuthedUser] = useState(null);
 
   useEffect(() => {
-    console.log()
     setAuthedUser(props.authedUser);
-    }, []);
+  }, [props.authedUser]);
 
   let users = props.users;
   let usersArray = Object.keys(users).map((key) => users[key]);
@@ -35,10 +34,7 @@ const Leaderboard = (props) => {
           </ul>
         </div>
       ) : (
-        <div className="please-login">
-        <h3>Please Login to view Leaderboard</h3>
-        <LoginPage />
-        </div>
+        <PleaseLogin />
       )}
     </div>
   );

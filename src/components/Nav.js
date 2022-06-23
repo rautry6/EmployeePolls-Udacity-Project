@@ -12,7 +12,7 @@ const Nav = (props) => {
 
   const onLogout = (e) => {
     setAuthUser("");
-    setAuthedUser(null);
+    props.dispatch(setAuthedUser(null));
   };
 
   return (

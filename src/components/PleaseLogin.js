@@ -4,7 +4,6 @@ import { setAuthedUser } from "../actions/authedUser";
 import { useNavigate } from "react-router-dom";
 
 const PleaseLogin = (props) => {
-  const nav = useNavigate();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(false);
@@ -16,7 +15,7 @@ const PleaseLogin = (props) => {
     if (username in users) {
       if (users[username].password === password) {
         props.dispatch(setAuthedUser(users[username]));
-        nav("/homepage");
+
       } else {
         setError(true);
         setUsername("");
