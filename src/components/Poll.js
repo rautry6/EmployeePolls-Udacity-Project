@@ -7,15 +7,21 @@ import PleaseLogin from "./PleaseLogin";
 const Poll = (props) => {
   let question = props.question;
   const [authedUser, setAuthedUser] = useState(null);
-  const [answered, setAnswered] = useState(props.users[props.authedUser].answers[question.id]);
+  const [answered, setAnswered] = useState(
+    props.users[props.authedUser].answers[question.id]
+  );
 
   let questionOneAnswers = question.optionOne.votes.length;
   let questionTwoAnswers = question.optionTwo.votes.length;
 
   let questionOnePercentage =
-    (questionOneAnswers / (question.optionOne.votes.length + question.optionTwo.votes.length)) * 100;
+    (questionOneAnswers /
+      (question.optionOne.votes.length + question.optionTwo.votes.length)) *
+    100;
   let questionTwoPercentage =
-    (questionTwoAnswers / (question.optionTwo.votes.length + question.optionOne.votes.length))* 100;
+    (questionTwoAnswers /
+      (question.optionTwo.votes.length + question.optionOne.votes.length)) *
+    100;
 
   useEffect(() => {
     setAuthedUser(props.authedUser);

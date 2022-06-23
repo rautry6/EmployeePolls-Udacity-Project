@@ -14,7 +14,6 @@ const PleaseLogin = (props) => {
     if (username in users) {
       if (users[username].password === password) {
         props.dispatch(setAuthedUser(users[username]));
-
       } else {
         setError(true);
         setUsername("");
@@ -37,7 +36,7 @@ const PleaseLogin = (props) => {
 
   return (
     <div className="login-page">
-    <h3 >Please Login to View Page</h3>
+      <h3>Please Login to View Page</h3>
       <h1>Employee Polls</h1>
       <h2>Login</h2>
       <div>
@@ -45,17 +44,9 @@ const PleaseLogin = (props) => {
           <div>
             <h3 itemID="invalid-login">Invalid username or password</h3>{" "}
             <p>User</p>
-            <input
-              type="text"
-              value={username}
-              onChange={handleUsername}
-            />
+            <input type="text" value={username} onChange={handleUsername} />
             <p>Password</p>
-            <input
-              type="password"
-              value={password}
-              onChange={handlePassword}
-            />
+            <input type="password" value={password} onChange={handlePassword} />
             <p>
               <button onClick={handleSubmit}>Login</button>
             </p>
@@ -63,17 +54,9 @@ const PleaseLogin = (props) => {
         ) : (
           <div>
             <p>User</p>
-            <input
-              type="text"
-              value={username}
-              onChange={handleUsername}
-            />
+            <input type="text" value={username} onChange={handleUsername} />
             <p>Password</p>
-            <input
-              type="password"
-              value={password}
-              onChange={handlePassword}
-            />
+            <input type="password" value={password} onChange={handlePassword} />
             <p>
               <button onClick={handleSubmit}>Login</button>
             </p>

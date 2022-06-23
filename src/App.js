@@ -3,10 +3,10 @@ import Dashboard from "./components/Dashboard";
 import LoginPage from "./components/LoginPage";
 import Poll from "./components/Poll";
 import { connect } from "react-redux";
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
 import { handleInitialData } from "./actions/shared";
 import Nav from "./components/Nav";
-import { Route, Routes} from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import CreatePoll from "./components/CreatePoll";
 import Leaderboard from "./components/Leaderboard";
 import NewPolls from "./components/NewPolls";
@@ -26,8 +26,7 @@ function App(props) {
 
       {props.loading ? (
         <div>Loading...</div>
-      ) : ( 
-      
+      ) : (
         <Routes>
           <Route path="/" element={<LoginPage />} />
           <Route path="/homepage" element={<Dashboard />} />
@@ -39,9 +38,8 @@ function App(props) {
             path="questions/:id"
             element={<Poll id={currentQuestion[0]} />}
           />
-          <Route path = '*' element={<PageNotFound />} />
+          <Route path="*" element={<PageNotFound />} />
         </Routes>
-      
       )}
     </div>
   );

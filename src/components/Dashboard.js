@@ -1,4 +1,3 @@
-import { _getQuestions } from "../_DATA";
 import { connect } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { setCurrentQuestion } from "../actions/currentQuestion";
