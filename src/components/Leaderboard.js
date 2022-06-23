@@ -11,7 +11,15 @@ const Leaderboard = (props) => {
 
   let users = props.users;
   let usersArray = Object.keys(users).map((key) => users[key]);
-  let sortedUsers = usersArray.sort((a, b) => b.score - a.score);
+
+  let sortedUsers = usersArray.sort((a, b) => {
+    return (
+      Object.keys(b.answers).length +
+      Object.keys(b.questions).length -
+      Object.keys(a.answers).length -
+      Object.keys(a.questions).length
+    );
+  });
 
   let questions = props.questions;
   let questionsArray = Object.keys(questions).map((key) => questions[key]);
@@ -24,7 +32,11 @@ const Leaderboard = (props) => {
           <ul>
             {sortedUsers.map((user, index) => (
               <li key={index}>
-              <img src={user.avatarURL} alt={user.name} className="leaderboard-profile-picture"/>
+                <img
+                  src={user.avatarURL}
+                  alt={user.name}
+                  className="leaderboard-profile-picture"
+                />
                 <span>{`${user.name} ${user.avatar} Questions: ${
                   questionsArray.filter(
                     (question) => question.author === user.id
