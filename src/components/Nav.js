@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import { setAuthedUser } from "../actions/authedUser";
+import { setAuthedUser } from "../actions/authedUser.js";
 import { useState, useEffect } from "react";
 
 const Nav = (props) => {

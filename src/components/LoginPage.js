@@ -1,6 +1,6 @@
-import { connect } from "react-redux/es/exports";
+import { connect } from "react-redux";
 import { useState } from "react";
-import { setAuthedUser } from "../actions/authedUser";
+import { setAuthedUser } from "../actions/authedUser.js";
 import { useNavigate } from "react-router-dom";
 
 const LoginPage = (props) => {

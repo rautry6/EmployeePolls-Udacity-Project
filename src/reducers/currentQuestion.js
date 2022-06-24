@@ -1,4 +1,4 @@
-import { CURRENT_QUESTION } from "../actions/currentQuestion";
+import { CURRENT_QUESTION } from "../actions/currentQuestion.js";
 
 export default function currentQuestion(state = null, action) {
   switch (action.type) {

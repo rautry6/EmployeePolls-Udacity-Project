@@ -1,6 +1,6 @@
-import { connect } from "react-redux/es/exports";
+import { connect } from "react-redux";
 import { useEffect, useState } from "react";
-import PleaseLogin from "./PleaseLogin";
+import PleaseLogin from "./PleaseLogin.js";
 
 const Leaderboard = (props) => {
   const [authedUser, setAuthedUser] = useState(null);

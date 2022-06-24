@@ -1,8 +1,8 @@
-import { connect } from "react-redux/es/exports";
+import { connect } from "react-redux";
 import { setCurrentQuestion } from "../actions/currentQuestion";
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
-import PleaseLogin from "./PleaseLogin";
+import PleaseLogin from "./PleaseLogin.js";
 
 const AnsweredPolls = (props) => {
   const navigate = useNavigate();

@@ -1,6 +1,6 @@
-import { receiveQuestions } from "./questions";
-import { receiveUsers } from "./users";
-import { getInitialData } from "../api";
+import { receiveQuestions } from "./questions.js";
+import { receiveUsers } from "./users.js";
+import { getInitialData } from "../api.js";
 
 export const handleInitialData = () => (dispatch) => {
   return getInitialData().then((data) => {

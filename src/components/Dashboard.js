@@ -1,8 +1,8 @@
 import { connect } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { setCurrentQuestion } from "../actions/currentQuestion";
+import { setCurrentQuestion } from "../actions/currentQuestion.js";
 import { useState, useEffect } from "react";
-import PleaseLogin from "./PleaseLogin";
+import PleaseLogin from "./PleaseLogin.js";
 
 const Dashboard = (props) => {
   const navigate = useNavigate();

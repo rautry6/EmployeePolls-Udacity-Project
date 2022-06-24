@@ -1,17 +1,17 @@
 import "./App.css";
-import Dashboard from "./components/Dashboard";
-import LoginPage from "./components/LoginPage";
-import Poll from "./components/Poll";
+import Dashboard from "./components/Dashboard.js";
+import LoginPage from "./components/LoginPage.js";
+import Poll from "./components/Poll.js";
 import { connect } from "react-redux";
 import { useEffect } from "react";
 import { handleInitialData } from "./actions/shared";
-import Nav from "./components/Nav";
+import Nav from "./components/Nav.js";
 import { Route, Routes } from "react-router-dom";
-import CreatePoll from "./components/CreatePoll";
-import Leaderboard from "./components/Leaderboard";
-import NewPolls from "./components/NewPolls";
-import Answered from "./components/Answered";
-import PageNotFound from "./components/PageNotFound";
+import CreatePoll from "./components/CreatePoll.js";
+import Leaderboard from "./components/Leaderboard.js";
+import NewPolls from "./components/NewPolls.js";
+import Answered from "./components/Answered.js";
+import PageNotFound from "./components/PageNotFound.js";
 
 function App(props) {
   const currentQuestion = props.currentQuestion || "";

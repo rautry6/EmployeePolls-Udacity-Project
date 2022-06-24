@@ -1,4 +1,4 @@
-import { RECEIVE_USERS, SAVE_ANSWER } from "../actions/users";
+import { RECEIVE_USERS, SAVE_ANSWER } from "../actions/users.js";
 
 export default function users(state = {}, action) {
   switch (action.type) {

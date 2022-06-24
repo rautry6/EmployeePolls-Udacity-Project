@@ -1,9 +1,9 @@
 import { handleAddQuestion } from "../actions/questions";
-import { connect } from "react-redux/es/exports";
+import { connect } from "react-redux";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { generateUID } from "../_DATA.js";
-import PleaseLogin from "./PleaseLogin";
+import PleaseLogin from "./PleaseLogin.js";
 
 const CreatePoll = (props) => {
   const [authedUser, setAuthedUser] = useState(null);

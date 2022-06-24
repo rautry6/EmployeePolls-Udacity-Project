@@ -1,8 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
-import { saveAnswer } from "../actions/users";
+import { saveAnswer } from "../actions/users.js";
 import { useState, useEffect } from "react";
-import PleaseLogin from "./PleaseLogin";
+import PleaseLogin from "./PleaseLogin.js";
 
 const Poll = (props) => {
   let question = props.question;

@@ -1,6 +1,6 @@
-import { connect } from "react-redux/es/exports";
+import { connect } from "react-redux";
 import { useState } from "react";
-import { setAuthedUser } from "../actions/authedUser";
+import { setAuthedUser } from "../actions/authedUser.js";
 
 const PleaseLogin = (props) => {
   const [username, setUsername] = useState("");
