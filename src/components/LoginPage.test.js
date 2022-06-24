@@ -9,11 +9,13 @@ import { BrowserRouter } from "react-router-dom";
 const store = createStore(rootReducer, middleware);
 describe("LoginPage", () => {
   it("matches snapshot", () => {
-    const { container } = render(<Provider store={store}>
-    <BrowserRouter>
-      <LoginPage />
-    </BrowserRouter>
-      </Provider>);
+    const { container } = render(
+      <Provider store={store}>
+        <BrowserRouter>
+          <LoginPage />
+        </BrowserRouter>
+      </Provider>
+    );
     expect(container).toMatchSnapshot();
   });
 });

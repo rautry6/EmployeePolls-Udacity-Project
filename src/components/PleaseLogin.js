@@ -42,23 +42,23 @@ const PleaseLogin = (props) => {
       <div>
         {error ? (
           <div>
-            <h3 itemID="invalid-login">Invalid username or password</h3>{" "}
+            <h3 itemID="invalid-login" data-testid = "failed-login-text">Invalid username or password</h3>{" "}
             <p>User</p>
-            <input type="text" value={username} onChange={handleUsername} />
+            <input type="text" value={username} onChange={handleUsername} data-testid = "failed-login-input"/>
             <p>Password</p>
-            <input type="password" value={password} onChange={handlePassword} />
+            <input type="password" value={password} onChange={handlePassword} data-testid = "failed-password-input" />
             <p>
-              <button onClick={handleSubmit}>Login</button>
+              <button onClick={handleSubmit} data-testid = "failed-submit-button">Login</button>
             </p>
           </div>
         ) : (
           <div>
             <p>User</p>
-            <input type="text" value={username} onChange={handleUsername} />
+            <input type="text" value={username} onChange={handleUsername} data-testid = "login-input"/>
             <p>Password</p>
-            <input type="password" value={password} onChange={handlePassword} />
+            <input type="password" value={password} onChange={handlePassword} data-testid = "password-input"/>
             <p>
-              <button onClick={handleSubmit}>Login</button>
+              <button onClick={handleSubmit} data-testid = "submit-button">Login</button>
             </p>
           </div>
         )}
