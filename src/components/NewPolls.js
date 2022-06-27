@@ -1,3 +1,4 @@
+import "./NewPolls.css";
 import { connect } from "react-redux";
 import { setCurrentQuestion } from "../actions/currentQuestion.js";
 import { useNavigate } from "react-router-dom";
@@ -39,9 +40,13 @@ const NewPolls = (props) => {
           <h1>New Polls</h1>
           <ul>
             {Object.entries(newQuestions).map((key, index) => (
-              <div key={index}>
-                <p>{key[1].author}</p>
-                <li>
+              <div
+                key={index}
+                className="poll"
+                onClick={() => handleSubmit(key)}
+              >
+                <p className="author">{key[1].author}</p>
+                <ul className="time">
                   {` ${new Date(key[1].timestamp).getHours()}:${
                     new Date(key[1].timestamp).getMinutes() < 10
                       ? `0${new Date(key[1].timestamp).getMinutes()}`
@@ -51,8 +56,7 @@ const NewPolls = (props) => {
                     key[1].timestamp
                   ).getMonth()}/${new Date(key[1].timestamp).getFullYear()}`}
                   <p></p>
-                  <button onClick={() => handleSubmit(key)}>Show</button>
-                </li>
+                </ul>
               </div>
             ))}
           </ul>
