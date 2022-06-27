@@ -1,3 +1,4 @@
+import "./Leaderboard.css";
 import { connect } from "react-redux";
 import { useEffect, useState } from "react";
 import PleaseLogin from "./PleaseLogin.js";
@@ -25,24 +26,24 @@ const Leaderboard = (props) => {
   let questionsArray = Object.keys(questions).map((key) => questions[key]);
 
   return (
-    <div>
+    <div className="leaderboard-page">
       {authedUser ? (
         <div className="leaderboard">
-          <h1>Leaderboard</h1>
-          <ul>
+          <h1 className="header">Leaderboard</h1>
+          <ul className="leaderboard-list">
             {sortedUsers.map((user, index) => (
-              <li key={index}>
+              <ul key={index}>
                 <img
                   src={user.avatarURL}
                   alt={user.name}
                   className="leaderboard-profile-picture"
                 />
-                <span>{`${user.name} ${user.avatar} Questions: ${
+                <span>{`${user.name} Questions: ${
                   questionsArray.filter(
                     (question) => question.author === user.id
                   ).length
                 } Answers: ${Object.keys(user.answers).length}`}</span>
-              </li>
+              </ul>
             ))}
           </ul>
         </div>
