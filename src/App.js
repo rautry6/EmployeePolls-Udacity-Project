@@ -28,13 +28,14 @@ function App(props) {
         <div>Loading...</div>
       ) : (
         <Routes>
-          <Route path="/" element={<LoginPage />} />
-          <Route path="/homepage" element={<Dashboard />} />
-          <Route path="/new" element={<NewPolls />} />
-          <Route path="/answered" element={<Answered />} />
-          <Route path="/add" element={<CreatePoll />} />
-          <Route path="/leaderboard" element={<Leaderboard />} />
+          <Route exact path="/" element={<LoginPage />} />
+          <Route exact path="/homepage" element={<Dashboard />} />
+          <Route exact path="/new" element={<NewPolls />} />
+          <Route exact path="/answered" element={<Answered />} />
+          <Route exact path="/add" element={<CreatePoll />} />
+          <Route exact path="/leaderboard" element={<Leaderboard />} />
           <Route
+            exact
             path="questions/:id"
             element={<Poll id={currentQuestion[0]} />}
           />

@@ -1,3 +1,4 @@
+import "./PageNotFound.css"
 import { connect } from "react-redux";
 import { useState, useEffect } from "react";
 import PleaseLogin from "./PleaseLogin.js";
@@ -10,10 +11,10 @@ const PageNotFound = (props) => {
   }, [props.authedUser]);
 
   return (
-    <div>
+    <div className="page-not-found">
       {authedUser ? (
         <div>
-          <h1 className="page-not-found"> 404 Error</h1>
+          <h1 className="error"> 404 Error</h1>
           <h1>Page Not Found</h1>
           <p>Sorry, this page does not exist.</p>
         </div>
