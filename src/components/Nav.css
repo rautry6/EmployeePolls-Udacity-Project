@@ -25,6 +25,8 @@
     background-color: rgb(226, 220, 220);
     padding: 10px;
     border-radius: 0.5cm;
-    width: 100%;
+    width: 98%;
     margin-top: 20px;
+    margin-left: 7px;
+    border: #617dfb solid 0.1cm;
 }
