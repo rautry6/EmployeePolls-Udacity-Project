@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Nav will match snapshot 1`] = `
+<div>
+  <div
+    class="nav"
+  >
+    <a
+      href="/homepage"
+    >
+      Home 
+    </a>
+    <a
+      href="/leaderboard"
+    >
+      Leaderboard 
+    </a>
+    <a
+      href="/new"
+    >
+      New 
+    </a>
+    <a
+      href="/answered"
+    >
+      Answered 
+    </a>
+    <a
+      href="/add"
+    >
+      Add Poll 
+    </a>
+    <span />
+    <a
+      href="/"
+    >
+      Logout
+    </a>
+  </div>
+</div>
+`;
