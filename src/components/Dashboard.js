@@ -1,3 +1,4 @@
+import "./Dashboard.css";
 import { connect } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { setCurrentQuestion } from "../actions/currentQuestion.js";
@@ -35,17 +36,21 @@ const Dashboard = (props) => {
   };
 
   return (
-    <div>
+    <div className="dashboard">
       {authedUser ? (
         <div>
-          <h1>Questions</h1>
-          <div>
-            <h3>New Questions</h3>
+          <h1 className="header">Questions</h1>
+          <h3 className="new-header">New Questions</h3>
+          <div className="new-questions">
             <ul>
               {Object.entries(newQuestions).map((key, index) => (
-                <div key={index}>
-                  <p>{key[1].author}</p>
-                  <li>
+                <div
+                  key={index}
+                  className="poll"
+                  onClick={() => handleSubmit(key)}
+                >
+                  <p className="author">{key[1].author}</p>
+                  <ul className="time">
                     {` ${new Date(key[1].timestamp).getHours()}:${
                       new Date(key[1].timestamp).getMinutes() < 10
                         ? `0${new Date(key[1].timestamp).getMinutes()}`
@@ -55,19 +60,22 @@ const Dashboard = (props) => {
                       key[1].timestamp
                     ).getMonth()}/${new Date(key[1].timestamp).getFullYear()}`}
                     <p></p>
-                    <button onClick={() => handleSubmit(key)}>Show</button>
-                  </li>
+                  </ul>
                 </div>
               ))}
             </ul>
           </div>
-          <div>
-            <h3>Done</h3>
+          <h3 className="done-header">Done</h3>
+          <div className="done-questions">
             <ul>
               {Object.entries(doneQuestions).map((key, index) => (
-                <div key={index}>
-                  <p>{key[1].author}</p>
-                  <li>
+                <div
+                  key={index}
+                  className="poll"
+                  onClick={() => handleSubmit(key)}
+                >
+                  <p className="author">{key[1].author}</p>
+                  <ul className="time">
                     {` ${new Date(key[1].timestamp).getHours()}:${
                       new Date(key[1].timestamp).getMinutes() < 10
                         ? `0${new Date(key[1].timestamp).getMinutes()}`
@@ -77,8 +85,7 @@ const Dashboard = (props) => {
                       key[1].timestamp
                     ).getMonth()}/${new Date(key[1].timestamp).getFullYear()}`}
                     <p></p>
-                    <button onClick={() => handleSubmit(key)}>Show</button>
-                  </li>
+                  </ul>
                 </div>
               ))}
             </ul>

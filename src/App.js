@@ -25,7 +25,7 @@ function App(props) {
       <Nav />
 
       {props.loading ? (
-        <div>Loading...</div>
+        <div className="App">Loading...</div>
       ) : (
         <Routes>
           <Route path="/" element={<LoginPage />} />
