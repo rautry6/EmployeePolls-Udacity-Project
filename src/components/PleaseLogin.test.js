@@ -22,4 +22,12 @@ describe("PleaseLogin", () => {
     fireEvent.click(submitButton);
     expect(getByTestId("failed-login-text")).toBeInTheDocument();
   });
+  it("will match snapshot", () => {
+    const { container } = render(
+      <Provider store={store}>
+        <PleaseLogin />
+      </Provider>
+    );
+    expect(container).toMatchSnapshot();
+  });
 });

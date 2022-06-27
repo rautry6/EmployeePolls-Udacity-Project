@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PleaseLogin will match snapshot 1`] = `
+<div>
+  <div
+    class="login-page"
+  >
+    <h3>
+      Please Login to View Page
+    </h3>
+    <h1>
+      Employee Polls
+    </h1>
+    <h2>
+      Login
+    </h2>
+    <div>
+      <div>
+        <p>
+          User
+        </p>
+        <input
+          data-testid="login-input"
+          type="text"
+          value=""
+        />
+        <p>
+          Password
+        </p>
+        <input
+          data-testid="password-input"
+          type="password"
+          value=""
+        />
+        <p>
+          <button
+            data-testid="submit-button"
+          >
+            Login
+          </button>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+`;
