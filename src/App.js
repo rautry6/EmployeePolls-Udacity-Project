@@ -37,7 +37,8 @@ function App(props) {
           <Route
             exact
             path="questions/:id"
-            element={<Poll id={currentQuestion[0]} />}
+            element={
+              currentQuestion ? <Poll id={currentQuestion[0]} /> : <PageNotFound />}
           />
           <Route path="*" element={<PageNotFound />} />
         </Routes>
