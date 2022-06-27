@@ -1,0 +1,7 @@
+.answered-polls {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 865px;
+    width: 100%;
+  }
