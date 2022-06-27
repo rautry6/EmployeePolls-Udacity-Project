@@ -1,0 +1,18 @@
+.link {
+    color: #617dfb;
+    word-spacing: 4ch;
+    text-decoration: none;
+}
+
+.nav-avatar{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.authed-user{
+    font-size: 1rem;
+    font-weight: bold;
+    color: rgb(0, 0, 0);
+}

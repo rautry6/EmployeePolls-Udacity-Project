@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { setAuthedUser } from "../actions/authedUser.js";
 import { useState, useEffect } from "react";
+import "./Nav.css";
 
 const Nav = (props) => {
   const [authedUser, setAuthUser] = useState(props.authedUser);
@@ -18,19 +19,19 @@ const Nav = (props) => {
 
   return (
     <div className="nav">
-      <Link to="/homepage">Home </Link>
+      <Link to="/homepage" className="link">Home </Link>
 
-      <Link to="/leaderboard">Leaderboard </Link>
+      <Link to="/leaderboard" className="link">Leaderboard </Link>
 
-      <Link to="/new">New </Link>
+      <Link to="/new" className="link">New </Link>
 
-      <Link to="/answered">Answered </Link>
+      <Link to="/answered" className="link">Answered </Link>
 
-      <Link to="/add">Add Poll </Link>
+      <Link to="/add" className="link">Add Poll </Link>
 
       {authedUser !== null ? (
         <span>
-          <span>{authedUser}</span>
+          <span className="authed-user">{authedUser}</span>
           <img
             src={users[authedUser].avatarURL}
             alt="avatar"
@@ -40,7 +41,7 @@ const Nav = (props) => {
       ) : (
         <span></span>
       )}
-      <Link to="/" onClick={onLogout}>
+      <Link to="/" onClick={onLogout} className="link">
         Logout
       </Link>
     </div>
