@@ -1,3 +1,4 @@
+import "./CreatePoll.css";
 import { handleAddQuestion } from "../actions/questions";
 import { connect } from "react-redux";
 import { useState, useEffect } from "react";
@@ -47,31 +48,33 @@ const CreatePoll = (props) => {
     <div className="create-poll">
       {authedUser ? (
         <div>
-          <h1>Create Poll</h1>
+          <h1 className="create-poll-header">Create Poll</h1>
           <form onSubmit={handleSubmit}>
             <div>
-              <label>Would You Rather</label>
+              <label className="question">Would You Rather</label>
             </div>
             <div>
-              <label>Option One:</label>
+              <label className="optionOne">Option One:</label>
               <input
                 type="text"
                 value={optionOne}
                 name="optionOne"
                 onChange={handleOptionOne}
+                className="optionOne-input"
               />
             </div>
             <div>
-              <label>Option Two:</label>
+              <label className="optionTwo">Option Two:</label>
               <input
                 type="text"
                 value={optionTwo}
                 name="optionTwo"
                 onChange={handleOptionTwo}
+                className="optionTwo-input"
               />
             </div>
             <div>
-              <button type="submit">Submit</button>
+              <button className="submit" type="submit">Submit</button>
             </div>
           </form>
         </div>
