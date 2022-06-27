@@ -1,4 +1,10 @@
-import { _saveQuestion, _saveQuestionAnswer } from "./_DATA";
+import {
+  _saveQuestion,
+  _saveQuestionAnswer,
+  generateUID,
+  _getQuestions,
+  _getUsers,
+} from "./_DATA.js";
 
 let saveQuestion = _saveQuestion;
 let saveQuestionAnswer = _saveQuestionAnswer;
@@ -51,9 +57,17 @@ describe("_saveQuestionAnswer", () => {
     expect(result).toEqual(true);
   });
   it("throws an error if invalid data is passed", async () => {
-    const authedUser = "test-authedUser";
-    const id = "test-id";
-    const error = await saveQuestionAnswer({ authedUser, id }).catch((e) => e);
+    const authedUser = "sarahedo";
+    const qid = "6ni6ok3ym7mf1p33lnez";
+    const error = await saveQuestionAnswer({ authedUser, qid }).catch((e) => e);
     expect(error).toEqual("Please provide authedUser, qid, and answer");
+  });
+});
+
+describe("generateUID", () => {
+  it("returns a random string", () => {
+    const resultOne = generateUID();
+    const resultTwo = generateUID();
+    expect(resultOne).not.toEqual(resultTwo);
   });
 });
