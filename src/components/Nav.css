@@ -1,6 +1,6 @@
 .link {
     color: #617dfb;
-    word-spacing: 4ch;
+    font-size: 1.5rem;
     text-decoration: none;
 }
 
@@ -15,4 +15,17 @@
     font-size: 1rem;
     font-weight: bold;
     color: rgb(0, 0, 0);
+}
+
+.nav{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    background-color: rgb(226, 220, 220);
+    padding: 10px;
+    margin-left:75px;
+    border-radius: 0.5cm;
+    width: 90%;
+    margin-top: 20px;
 }

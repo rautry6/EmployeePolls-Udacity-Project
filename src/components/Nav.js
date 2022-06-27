@@ -19,15 +19,25 @@ const Nav = (props) => {
 
   return (
     <div className="nav">
-      <Link to="/homepage" className="link">Home </Link>
+      <Link to="/homepage" className="link">
+        Home{" "}
+      </Link>
 
-      <Link to="/leaderboard" className="link">Leaderboard </Link>
+      <Link to="/leaderboard" className="link">
+        Leaderboard{" "}
+      </Link>
 
-      <Link to="/new" className="link">New </Link>
+      <Link to="/new" className="link">
+        New{" "}
+      </Link>
 
-      <Link to="/answered" className="link">Answered </Link>
+      <Link to="/answered" className="link">
+        Answered{" "}
+      </Link>
 
-      <Link to="/add" className="link">Add Poll </Link>
+      <Link to="/add" className="link">
+        Add Poll{" "}
+      </Link>
 
       {authedUser !== null ? (
         <span>
@@ -37,13 +47,15 @@ const Nav = (props) => {
             alt="avatar"
             className="nav-avatar"
           />
+          <Link to="/" onClick={onLogout} className="link">
+            Logout
+          </Link>
         </span>
       ) : (
-        <span></span>
+        <Link to="/" onClick={onLogout} className="link">
+          Logout
+        </Link>
       )}
-      <Link to="/" onClick={onLogout} className="link">
-        Logout
-      </Link>
     </div>
   );
 };
