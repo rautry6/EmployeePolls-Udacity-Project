@@ -39,7 +39,11 @@ const AnsweredPolls = (props) => {
           <h1>Answered Polls</h1>
           <ul>
             {Object.entries(answeredQuestions).map((key, index) => (
-              <div key={index} className="poll" onClick={() => handleSubmit(key)}>
+              <div
+                key={index}
+                className="poll"
+                onClick={() => handleSubmit(key)}
+              >
                 <p className="author">{key[1].author}</p>
                 <ul className="time">
                   {` ${new Date(key[1].timestamp).getHours()}:${
