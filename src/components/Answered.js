@@ -55,7 +55,6 @@ const AnsweredPolls = (props) => {
                     key[1].timestamp
                   ).getMonth()}/${new Date(key[1].timestamp).getFullYear()}`}
                   <p></p>
-                  <button onClick={() => handleSubmit(key)}>Show</button>
                 </ul>
               </div>
             ))}

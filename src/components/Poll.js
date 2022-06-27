@@ -1,3 +1,4 @@
+import "./Poll.css";
 import React from "react";
 import { connect } from "react-redux";
 import { saveAnswer } from "../actions/users.js";
@@ -22,6 +23,8 @@ const Poll = (props) => {
     (questionTwoAnswers /
       (question.optionTwo.votes.length + question.optionOne.votes.length)) *
     100;
+
+    let currentUserAnswer = props.users[props.authedUser].answers[question.id];
 
   useEffect(() => {
     setAuthedUser(props.authedUser);
@@ -55,15 +58,15 @@ const Poll = (props) => {
     props.dispatch(saveAnswer(authedUser, question.id, "optionTwo"));
   };
   return (
-    <div className="poll">
+    <div className="poll-item">
       {authedUser ? (
         <div>
           <ul>
-            <h3>Poll by {question.author}</h3>
+            <h3 className="by">Poll by {question.author}</h3>
 
-            <h3>Would You Rather</h3>
+            <h3 className="poll-question">Would You Rather</h3>
             <form>
-              <div>
+              <div className="poll-option">
                 <p>{question.optionOne.text}</p>
                 <input
                   type="button"
@@ -72,7 +75,7 @@ const Poll = (props) => {
                   onClick={handleOptionOne}
                 />
                 {answered ? (
-                  <div>
+                  <div className= {currentUserAnswer === "optionOne" ? "poll-answer" : ""}>
                     <p>{`Answers: ${questionOneAnswers}`}</p>
                     <p>{`Percentage: ${questionOnePercentage.toFixed(2)}%`}</p>
                   </div>
@@ -80,7 +83,7 @@ const Poll = (props) => {
                   <p></p>
                 )}
               </div>
-              <div>
+              <div className="poll-option">
                 <p>{question.optionTwo.text}</p>
                 <input
                   type="button"
@@ -89,7 +92,7 @@ const Poll = (props) => {
                   onClick={handleOptionTwo}
                 />
                 {answered ? (
-                  <div>
+                  <div className={currentUserAnswer === "optionTwo" ? "poll-answer" : ""}>
                     <p>{`Answers: ${questionTwoAnswers}`}</p>
                     <p>{`Percentage: ${questionTwoPercentage.toFixed(2)}%`}</p>
                   </div>
