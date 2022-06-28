@@ -6,15 +6,30 @@ import { connect } from "react-redux";
 import { useEffect } from "react";
 import { handleInitialData } from "./actions/shared";
 import Nav from "./components/Nav.js";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
 import CreatePoll from "./components/CreatePoll.js";
 import Leaderboard from "./components/Leaderboard.js";
 import NewPolls from "./components/NewPolls.js";
 import Answered from "./components/Answered.js";
 import PageNotFound from "./components/PageNotFound.js";
+import { setCurrentQuestion } from "./actions/currentQuestion.js";
 
 function App(props) {
-  const currentQuestion = props.currentQuestion || "";
+  let id;
+  if(props.currentQuestion){
+    id = props.currentQuestion[0];
+  }
+ 
+  const location = useLocation();
+
+  if (!props.currentQuestion) {
+    if (location.pathname.split("/")[2]) {
+      let questionId = location.pathname.split("/")[2];
+      questionId = questionId.split(":")[1];
+      id = questionId;
+      props.dispatch(setCurrentQuestion([questionId, props.questions[questionId]]));
+    }
+  }
 
   useEffect(() => {
     props.dispatch(handleInitialData());
@@ -35,10 +50,9 @@ function App(props) {
           <Route exact path="/add" element={<CreatePoll />} />
           <Route exact path="/leaderboard" element={<Leaderboard />} />
           <Route
-            exact
             path="questions/:id"
             element={
-              currentQuestion ? <Poll id={currentQuestion[0]} /> : <PageNotFound />}
+              props.questions[id] ? <Poll/> : <PageNotFound />}
           />
           <Route path="*" element={<PageNotFound />} />
         </Routes>

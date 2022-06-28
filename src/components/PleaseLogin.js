@@ -36,7 +36,7 @@ const PleaseLogin = (props) => {
   };
 
   return (
-    <div className="login-page">
+    <div className="please-login-page">
       <h3 className="please-login">Please Login to View Page</h3>
       <h1 className="title">Employee Polls</h1>
       <h2 className="login">Login</h2>
