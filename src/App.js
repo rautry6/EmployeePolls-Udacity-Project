@@ -35,7 +35,7 @@ function App(props) {
 
   useEffect(() => {
     props.dispatch(handleInitialData());
-  }, []);
+  }, [props]);
 
   return (
     <div className="App">
@@ -53,7 +53,7 @@ function App(props) {
           <Route exact path="/leaderboard" element={<Leaderboard />} />
           <Route
             path="questions/:id"
-            element={props.questions[id] ? <Poll /> : <PageNotFound />}
+            element={props.questions[id] ? <Poll/> : <PageNotFound />}
           />
           <Route path="*" element={<PageNotFound />} />
         </Routes>

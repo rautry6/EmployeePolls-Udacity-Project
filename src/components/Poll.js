@@ -5,20 +5,19 @@ import { saveAnswer } from "../actions/users.js";
 import { useState, useEffect } from "react";
 import PleaseLogin from "./PleaseLogin.js";
 import { useLocation } from "react-router";
-import { setCurrentQuestion } from "../actions/currentQuestion.js";
 
 const Poll = (props) => {
   const location = useLocation();
+  const questions = useSelector((state) => state.questions);
 
   const [authedUser, setAuthedUser] = useState(null);
   const [answered, setAnswered] = useState(null);
 
-  let question = props.currenQuestion[1];
+  let question = questions[location.pathname.split("/")[2].split(":")[1]];
   let questionOneAnswers;
   let questionTwoAnswers;
   let questionOnePercentage = 0;
   let questionTwoPercentage = 0;
-  let currentUserAnswer;
 
   if (props.authedUser) {
     questionOneAnswers = question.optionOne.votes.length;
@@ -32,17 +31,7 @@ const Poll = (props) => {
       (questionTwoAnswers /
         (question.optionTwo.votes.length + question.optionOne.votes.length)) *
       100;
-
-    currentUserAnswer = props.users[props.authedUser].answers[question.id];
   }
-
-  //Checks which question is being viewed
-  useEffect(() => {
-    let questionId = location.pathname.split("/")[2];
-    questionId = questionId.split(":")[1];
-    question = props.questions[questionId];
-    props.dispatch(setCurrentQuestion([questionId, question]));
-  }, []);
 
   //Checks if user has answered the question
   useEffect(() => {
@@ -67,7 +56,14 @@ const Poll = (props) => {
         }
       }
     }
-  }, [props.authedUser, answered]);
+  }, [
+    props.authedUser,
+    answered,
+    props.users,
+    question.id,
+    question.optionOne.votes,
+    question.optionTwo.votes,
+  ]);
 
   const handleOptionOne = (e) => {
     e.preventDefault();
@@ -100,7 +96,9 @@ const Poll = (props) => {
                 {answered ? (
                   <div
                     className={
-                      currentUserAnswer === "optionOne" ? "poll-answer" : ""
+                      question.optionOne.votes.includes(authedUser)
+                        ? "poll-answer"
+                        : ""
                     }
                   >
                     <p>{`Answers: ${questionOneAnswers}`}</p>
@@ -121,7 +119,9 @@ const Poll = (props) => {
                 {answered ? (
                   <div
                     className={
-                      currentUserAnswer === "optionTwo" ? "poll-answer" : ""
+                      question.optionTwo.votes.includes(authedUser)
+                        ? "poll-answer"
+                        : ""
                     }
                   >
                     <p>{`Answers: ${questionTwoAnswers}`}</p>
@@ -143,7 +143,6 @@ const Poll = (props) => {
 
 function mapStateToProps(state) {
   return {
-    currenQuestion: state.currentQuestion,
     questions: state.questions,
     authedUser: state.authedUser,
     users: state.users,
