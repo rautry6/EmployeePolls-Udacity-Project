@@ -1,63 +1,62 @@
 .create-poll {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    height: 885px;
-    width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 885px;
+  width: 100%;
 }
 
 .create-poll-header {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    font-size: 3.5rem;
-    margin-bottom: 80px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 3.5rem;
+  margin-bottom: 80px;
 }
 
-.question{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 20px;
-    width:100%;
-    padding: 5px;
-    font-size: 2rem;
-    font-weight: bold;
+.question {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+  width: 100%;
+  padding: 5px;
+  font-size: 2rem;
+  font-weight: bold;
 }
 
-.optionOne{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    font-size: 1.5rem;
-    font-weight: bold;
-    margin-top: 20px;
-    width:100%;
-    padding: 5px;
+.optionOne {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-top: 20px;
+  width: 100%;
+  padding: 5px;
 }
 
-.optionTwo{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    font-size: 1.5rem;
-    font-weight: bold;
-    margin-top: 20px;
-    width:100%;
-    padding: 5px;           
+.optionTwo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-top: 20px;
+  width: 100%;
+  padding: 5px;
 }
 
-.submit{
-    display: flex;
-    align-items: center;
-    font-size: 1.5rem;
-    font-weight: bold;
-    margin-top: 20px;
-    margin-left: 90px;
-    width:40%;
-    padding: 5px;
+.submit {
+  display: flex;
+  align-items: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-top: 20px;
+  margin-left: 90px;
+  width: 40%;
+  padding: 5px;
 }
-

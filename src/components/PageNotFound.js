@@ -1,4 +1,4 @@
-import "./PageNotFound.css"
+import "./PageNotFound.css";
 import { connect } from "react-redux";
 import { useState, useEffect } from "react";
 import PleaseLogin from "./PleaseLogin.js";

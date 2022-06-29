@@ -1,37 +1,37 @@
-.leaderboard-profile-picture{
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    margin-right: 15px;
+.leaderboard-profile-picture {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin-right: 15px;
 }
 
-.leaderboard{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin-top: 20px;
+.leaderboard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
 }
 
-.leaderboard-list{
-    border: 0.1cm solid rgb(0, 0, 0); 
-    border-radius: 0.5cm;
-    width:40%;
-    margin-top: 20px;
-    padding: 10px;
-    background-color: rgb(226, 220, 220);
-    font-size: 1.2rem;
-    font-weight: bold;
+.leaderboard-list {
+  border: 0.1cm solid rgb(0, 0, 0);
+  border-radius: 0.5cm;
+  width: 40%;
+  margin-top: 20px;
+  padding: 10px;
+  background-color: rgb(226, 220, 220);
+  font-size: 1.2rem;
+  font-weight: bold;
 }
 
-.leaderboard-page{
-    height: 900px;
-    background-color: wheat;
+.leaderboard-page {
+  height: 900px;
+  background-color: wheat;
 }
-.header{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    font-size: 3rem;;
+.header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 3rem;
 }

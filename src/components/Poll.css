@@ -19,16 +19,15 @@
 }
 
 .poll-answer {
-    color:  rgb(248, 2, 2);
-    
+  color: rgb(248, 2, 2);
 }
 
-.poll-question{
-    font-size: 2rem;
-    font-weight: bold;
+.poll-question {
+  font-size: 2rem;
+  font-weight: bold;
 }
 
-.by{
-    font-size: 2rem;
-    font-weight: bold;
+.by {
+  font-size: 2rem;
+  font-weight: bold;
 }

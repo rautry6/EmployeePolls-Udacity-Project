@@ -74,7 +74,9 @@ const CreatePoll = (props) => {
               />
             </div>
             <div>
-              <button className="submit" type="submit">Submit</button>
+              <button className="submit" type="submit">
+                Submit
+              </button>
             </div>
           </form>
         </div>

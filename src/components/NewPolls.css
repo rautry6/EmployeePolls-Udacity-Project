@@ -1,7 +1,7 @@
 .new-polls {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    height: 885px;
-    width: 100%;
-  }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 885px;
+  width: 100%;
+}

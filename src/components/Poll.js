@@ -20,7 +20,6 @@ const Poll = (props) => {
   let questionTwoPercentage = 0;
   let currentUserAnswer;
 
-
   if (props.authedUser) {
     questionOneAnswers = question.optionOne.votes.length;
     questionTwoAnswers = question.optionTwo.votes.length;

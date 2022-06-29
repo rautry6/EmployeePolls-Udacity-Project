@@ -16,10 +16,10 @@ import { setCurrentQuestion } from "./actions/currentQuestion.js";
 
 function App(props) {
   let id;
-  if(props.currentQuestion){
+  if (props.currentQuestion) {
     id = props.currentQuestion[0];
   }
- 
+
   const location = useLocation();
 
   if (!props.currentQuestion) {
@@ -27,7 +27,9 @@ function App(props) {
       let questionId = location.pathname.split("/")[2];
       questionId = questionId.split(":")[1];
       id = questionId;
-      props.dispatch(setCurrentQuestion([questionId, props.questions[questionId]]));
+      props.dispatch(
+        setCurrentQuestion([questionId, props.questions[questionId]])
+      );
     }
   }
 
@@ -51,8 +53,7 @@ function App(props) {
           <Route exact path="/leaderboard" element={<Leaderboard />} />
           <Route
             path="questions/:id"
-            element={
-              props.questions[id] ? <Poll/> : <PageNotFound />}
+            element={props.questions[id] ? <Poll /> : <PageNotFound />}
           />
           <Route path="*" element={<PageNotFound />} />
         </Routes>
