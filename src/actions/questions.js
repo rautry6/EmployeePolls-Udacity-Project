@@ -1,8 +1,7 @@
-import { _saveQuestion, _saveQuestionAnswer } from "../_DATA.js";
+import { _saveQuestion } from "../_DATA.js";
 
 export const RECEIVE_QUESTIONS = "RECEIVE_QUESTIONS";
 export const ADD_QUESTION = "ADD_QUESTION";
-export const ADD_ANSWER = "ADD_ANSWER";
 
 function addQuestion(question) {
   return {

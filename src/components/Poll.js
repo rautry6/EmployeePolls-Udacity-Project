@@ -9,6 +9,7 @@ import { useLocation } from "react-router";
 const Poll = (props) => {
   const location = useLocation();
   const questions = useSelector((state) => state.questions);
+  const users = useSelector(state => state.users);
 
   const [authedUser, setAuthedUser] = useState(null);
   const [answered, setAnswered] = useState(null);
@@ -38,9 +39,9 @@ const Poll = (props) => {
     if (props.authedUser) {
       setAuthedUser(props.authedUser);
 
-      if (props.users[props.authedUser].answers[question.id]) {
+      if (users[props.authedUser].answers[question.id]) {
         if (
-          props.users[props.authedUser].answers[question.id] === "optionOne"
+          users[props.authedUser].answers[question.id] === "optionOne"
         ) {
           if (question.optionOne.votes.includes(props.authedUser)) {
             setAnswered("optionOne");
@@ -59,7 +60,7 @@ const Poll = (props) => {
   }, [
     props.authedUser,
     answered,
-    props.users,
+    users,
     question.id,
     question.optionOne.votes,
     question.optionTwo.votes,
@@ -67,16 +68,18 @@ const Poll = (props) => {
 
   const handleOptionOne = (e) => {
     e.preventDefault();
-    props.dispatch(saveAnswer(props.authedUser, question.id, "optionOne"));
+    props.dispatch(saveAnswer({ authedUser: authedUser, qid: question.id, answer: "optionOne"}));
     setAnswered("optionOne");
     console.log(question)
+    console.log(users[authedUser])
   };
 
   const handleOptionTwo = (e) => {
     e.preventDefault();
-    props.dispatch(saveAnswer(authedUser, question.id, "optionTwo"));
+    props.dispatch(saveAnswer({ authedUser: authedUser, qid: question.id, answer: "optionTwo"}));
     setAnswered("optionTwo");
     console.log(question)
+    console.log(users[authedUser])
   };
   return (
     <div className="poll-item">
@@ -147,7 +150,7 @@ function mapStateToProps(state) {
   return {
     questions: state.questions,
     authedUser: state.authedUser,
-    users: state.users,
+   // users: state.users,
   };
 }
 

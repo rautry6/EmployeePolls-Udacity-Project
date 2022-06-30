@@ -24,16 +24,13 @@ const Dashboard = (props) => {
     newQuestions = questionsArray
       .filter(
         (question) =>
-          question.optionOne.votes.includes(user.id) === false &&
-          question.optionTwo.votes.includes(user.id) === false
+         user.answers[question.id] === undefined 
       )
       .sort((a, b) => b.timestamp - a.timestamp);
-    console.log(newQuestions);
     doneQuestions = questionsArray
       .filter(
         (question) =>
-          question.optionOne.votes.includes(user.id) !== true ||
-          question.optionTwo.votes.includes(user.id) !== true
+          user.answers[question.id] !== undefined
       )
       .sort((a, b) => b.timestamp - a.timestamp);
   }
