@@ -69,12 +69,14 @@ const Poll = (props) => {
     e.preventDefault();
     props.dispatch(saveAnswer(props.authedUser, question.id, "optionOne"));
     setAnswered("optionOne");
+    console.log(question)
   };
 
   const handleOptionTwo = (e) => {
     e.preventDefault();
     props.dispatch(saveAnswer(authedUser, question.id, "optionTwo"));
     setAnswered("optionTwo");
+    console.log(question)
   };
   return (
     <div className="poll-item">

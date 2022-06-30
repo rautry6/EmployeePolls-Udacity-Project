@@ -51,9 +51,9 @@ const AnsweredPolls = (props) => {
                       ? `0${new Date(key[1].timestamp).getMinutes()}`
                       : new Date(key[1].timestamp).getMinutes()
                   }
-                    ${new Date(key[1].timestamp).getDay()}/${new Date(
+                  ${new Date(key[1].timestamp).getMonth() + 1}/${new Date(
                     key[1].timestamp
-                  ).getMonth()}/${new Date(key[1].timestamp).getFullYear()}`}
+                  ).getDate()}/${new Date(key[1].timestamp).getFullYear()}`}
                   <p></p>
                 </ul>
               </div>

@@ -22,10 +22,19 @@ const Dashboard = (props) => {
 
   if (user) {
     newQuestions = questionsArray
-      .filter((question) => user.answers[question.id] === undefined)
+      .filter(
+        (question) =>
+          question.optionOne.votes.includes(user.id) === false &&
+          question.optionTwo.votes.includes(user.id) === false
+      )
       .sort((a, b) => b.timestamp - a.timestamp);
+    console.log(newQuestions);
     doneQuestions = questionsArray
-      .filter((question) => user.answers[question.id] !== undefined)
+      .filter(
+        (question) =>
+          question.optionOne.votes.includes(user.id) !== true ||
+          question.optionTwo.votes.includes(user.id) !== true
+      )
       .sort((a, b) => b.timestamp - a.timestamp);
   }
 
@@ -56,9 +65,9 @@ const Dashboard = (props) => {
                         ? `0${new Date(key[1].timestamp).getMinutes()}`
                         : new Date(key[1].timestamp).getMinutes()
                     }
-                    ${new Date(key[1].timestamp).getDay()}/${new Date(
+                    ${new Date(key[1].timestamp).getMonth() + 1}/${new Date(
                       key[1].timestamp
-                    ).getMonth()}/${new Date(key[1].timestamp).getFullYear()}`}
+                    ).getDate()}/${new Date(key[1].timestamp).getFullYear()}`}
                     <p></p>
                   </ul>
                 </div>
@@ -81,9 +90,9 @@ const Dashboard = (props) => {
                         ? `0${new Date(key[1].timestamp).getMinutes()}`
                         : new Date(key[1].timestamp).getMinutes()
                     }
-                    ${new Date(key[1].timestamp).getDay()}/${new Date(
+                    ${new Date(key[1].timestamp).getMonth() + 1}/${new Date(
                       key[1].timestamp
-                    ).getMonth()}/${new Date(key[1].timestamp).getFullYear()}`}
+                    ).getDate()}/${new Date(key[1].timestamp).getFullYear()}`}
                     <p></p>
                   </ul>
                 </div>
