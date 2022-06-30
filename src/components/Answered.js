@@ -21,9 +21,9 @@ const AnsweredPolls = (props) => {
   const user = users[authedUser];
   if (user) {
     questionsArray = Object.keys(questions).map((key) => questions[key]);
-    answeredQuestions = questionsArray.filter(
-      (question) => user.answers[question.id] !== undefined
-    );
+    answeredQuestions = questionsArray
+      .filter((question) => user.answers[question.id] !== undefined)
+      .sort((a, b) => b.timestamp - a.timestamp);
   }
 
   const handleSubmit = (key) => {
