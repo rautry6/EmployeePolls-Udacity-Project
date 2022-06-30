@@ -6,32 +6,42 @@ exports[`Nav will match snapshot 1`] = `
     class="nav"
   >
     <a
+      class="link"
       href="/homepage"
     >
-      Home 
+      Home
+       
     </a>
     <a
+      class="link"
       href="/leaderboard"
     >
-      Leaderboard 
+      Leaderboard
+       
     </a>
     <a
+      class="link"
       href="/new"
     >
-      New 
+      New
+       
     </a>
     <a
+      class="link"
       href="/answered"
     >
-      Answered 
+      Answered
+       
     </a>
     <a
+      class="link"
       href="/add"
     >
-      Add Poll 
+      Add Poll
+       
     </a>
-    <span />
     <a
+      class="link"
       href="/"
     >
       Logout
