@@ -1,5 +1,6 @@
 import "./CreatePoll.css";
 import { handleAddQuestion } from "../actions/questions";
+import { addQuestion } from "../actions/users";
 import { connect } from "react-redux";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
@@ -30,6 +31,7 @@ const CreatePoll = (props) => {
       };
 
       props.dispatch(handleAddQuestion(question));
+      props.dispatch(addQuestion(question));
       nav("/homepage");
     }
   };
@@ -90,6 +92,7 @@ const CreatePoll = (props) => {
 function mapStateToProps(state) {
   return {
     authedUser: state.authedUser,
+    users: state.users,
   };
 }
 

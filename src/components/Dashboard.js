@@ -6,6 +6,8 @@ import { useState, useEffect } from "react";
 import PleaseLogin from "./PleaseLogin.js";
 
 const Dashboard = (props) => {
+  console.log(props.users)
+  console.log(props.questions)
   const navigate = useNavigate();
   const [authedUser, setAuthedUser] = useState(null);
 
