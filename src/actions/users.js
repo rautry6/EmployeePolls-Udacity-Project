@@ -1,8 +1,7 @@
-import { _saveQuestionAnswer } from "../_DATA";
 
 export const RECEIVE_USERS = "RECEIVE_USERS";
 export const SAVE_ANSWER = "SAVE_ANSWER";
-export const ADD_QUESTION = "ADD_QUESTION";
+export const ADD_QUESTION_TO_USER = "ADD_QUESTION_TO_USER";
 
 export function receiveUsers(users) {
   return {
@@ -11,19 +10,19 @@ export function receiveUsers(users) {
   };
 }
 
-export function addQuestion(question) {
-  console.log(question)
-  console.log(question.author);
+export function addQuestionToUser(id, author) {
   return {
-    type: ADD_QUESTION,
-    question,
+    type: ADD_QUESTION_TO_USER,
+    id: id,
+    author: author,
   };
 }
 
 export function saveAnswer(authedUser, qid, answer) {
-  return (dispatch) => {
-    return _saveQuestionAnswer(authedUser, qid, answer).then((question) => {
-      dispatch(receiveUsers(question));
-    });
-  };
+    return{
+        type: SAVE_ANSWER,
+        authedUser: authedUser,
+        qid: qid,
+        answer: answer
+    }
 }

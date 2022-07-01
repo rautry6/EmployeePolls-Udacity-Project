@@ -13,15 +13,25 @@ export default function questions(state = {}, action) {
         [action.question.id]: action.question,
       };
     case SAVE_QUESTION_ANSWER:
+      console.log(action.qid)
+      console.log(state)
+      console.log({ ...state,
+        [action.qid]: {
+          ...state[action.qid],
+          [action.answer]: {
+            ...state[action.qid][action.answer],
+            
+          },
+        },})
       return {
         //check what users answer is and add it to the right votes array
         ...state,
-        [action.question.id]: {
-          ...state[action.question.id],
+        [action.qid]: {
+          ...state[action.qid],
           [action.answer]: {
-            ...state[action.question.id][action.answer],
-            votes: state[action.question.id][action.answer].votes.concat(
-              action.author
+            ...state[action.qid][action.answer],
+            votes: state[action.qid][action.answer].votes.concat(
+              action.authedUser
             ),
           },
         },

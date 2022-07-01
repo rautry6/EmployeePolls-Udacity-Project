@@ -1,7 +1,7 @@
 import "./Poll.css";
 import React from "react";
 import { connect, useSelector } from "react-redux";
-import { saveAnswer } from "../actions/users.js";
+import { handleSaveAnswer } from "../actions/shared.js";
 import { useState, useEffect } from "react";
 import PleaseLogin from "./PleaseLogin.js";
 import { useLocation } from "react-router";
@@ -68,18 +68,14 @@ const Poll = (props) => {
 
   const handleOptionOne = (e) => {
     e.preventDefault();
-    props.dispatch(saveAnswer({ authedUser: authedUser, qid: question.id, answer: "optionOne"}));
+    props.dispatch(handleSaveAnswer(authedUser,question.id, "optionOne"));
     setAnswered("optionOne");
-    console.log(question)
-    console.log(users[authedUser])
   };
 
   const handleOptionTwo = (e) => {
     e.preventDefault();
-    props.dispatch(saveAnswer({ authedUser: authedUser, qid: question.id, answer: "optionTwo"}));
+    props.dispatch(handleSaveAnswer(authedUser,  question.id,  "optionTwo"));
     setAnswered("optionTwo");
-    console.log(question)
-    console.log(users[authedUser])
   };
   return (
     <div className="poll-item">

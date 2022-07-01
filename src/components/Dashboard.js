@@ -1,18 +1,20 @@
 import "./Dashboard.css";
-import { connect } from "react-redux";
+import { connect, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { setCurrentQuestion } from "../actions/currentQuestion.js";
 import { useState, useEffect } from "react";
 import PleaseLogin from "./PleaseLogin.js";
 
 const Dashboard = (props) => {
-  console.log(props.users)
-  console.log(props.questions)
   const navigate = useNavigate();
   const [authedUser, setAuthedUser] = useState(null);
 
+  const Users = useSelector((state) => state.users);
+
   useEffect(() => {
     setAuthedUser(props.authedUser);
+    console.log(Users);
+    console.log(props.questions);
   }, [props.authedUser]);
 
   let newQuestions;
@@ -24,16 +26,10 @@ const Dashboard = (props) => {
 
   if (user) {
     newQuestions = questionsArray
-      .filter(
-        (question) =>
-         user.answers[question.id] === undefined 
-      )
+      .filter((question) => user.answers[question.id] === undefined)
       .sort((a, b) => b.timestamp - a.timestamp);
     doneQuestions = questionsArray
-      .filter(
-        (question) =>
-          user.answers[question.id] !== undefined
-      )
+      .filter((question) => user.answers[question.id] !== undefined)
       .sort((a, b) => b.timestamp - a.timestamp);
   }
 
@@ -106,7 +102,6 @@ const Dashboard = (props) => {
   );
 };
 
-//method to map state to props
 function mapStateToProps(state) {
   return {
     questions: state.questions,

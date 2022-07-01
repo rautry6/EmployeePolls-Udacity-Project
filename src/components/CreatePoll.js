@@ -1,7 +1,6 @@
 import "./CreatePoll.css";
-import { handleAddQuestion } from "../actions/questions";
-import { addQuestion } from "../actions/users";
-import { connect } from "react-redux";
+import { handleAddQuestion } from "../actions/shared.js";
+import { connect, useSelector } from "react-redux";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { generateUID } from "../_DATA.js";
@@ -9,6 +8,8 @@ import PleaseLogin from "./PleaseLogin.js";
 
 const CreatePoll = (props) => {
   const [authedUser, setAuthedUser] = useState(null);
+
+  const users = useSelector((state) => state.users);
 
   useEffect(() => {
     setAuthedUser(props.authedUser);
@@ -31,7 +32,6 @@ const CreatePoll = (props) => {
       };
 
       props.dispatch(handleAddQuestion(question));
-      props.dispatch(addQuestion(question));
       nav("/homepage");
     }
   };

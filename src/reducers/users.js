@@ -1,4 +1,4 @@
-import { RECEIVE_USERS, SAVE_ANSWER, ADD_QUESTION } from "../actions/users.js";
+import { RECEIVE_USERS, SAVE_ANSWER, ADD_QUESTION_TO_USER } from "../actions/users.js";
 
 export default function users(state = {}, action) {
   switch (action.type) {
@@ -18,15 +18,21 @@ export default function users(state = {}, action) {
           },
         },
       };
-    case ADD_QUESTION:
+    case ADD_QUESTION_TO_USER:
+      console.log( {
+        ...state,
+        [action.author]: {
+          ...state[action.author],
+          questions: state[action.author].questions.concat(action.id)
+        }
+      })
+      
       return {
         ...state,
-        [action.question.author]: {
-          ...state[action.question.author],
-          questions: state[action.question.author].questions.concat([
-            action.question.id,
-          ]),
-        },
+        [action.author]: {
+          ...state[action.author],
+          questions: state[action.author].questions.concat(action.id)
+        }
       };
     default:
       return state;

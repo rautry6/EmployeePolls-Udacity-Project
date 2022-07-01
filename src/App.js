@@ -34,7 +34,9 @@ function App(props) {
   }
 
   useEffect(() => {
-    props.dispatch(handleInitialData());
+    if (props.loading) {
+      props.dispatch(handleInitialData());
+    }
   }, [props]);
 
   return (
@@ -53,7 +55,7 @@ function App(props) {
           <Route exact path="/leaderboard" element={<Leaderboard />} />
           <Route
             path="questions/:id"
-            element={props.questions[id] ? <Poll/> : <PageNotFound />}
+            element={props.questions[id] ? <Poll /> : <PageNotFound />}
           />
           <Route path="*" element={<PageNotFound />} />
         </Routes>
